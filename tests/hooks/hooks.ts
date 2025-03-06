@@ -9,6 +9,7 @@ Before(async function () {
     const page = await browser.newPage();
     pageFixture.page = page;
 });
+
 After(async function () {
     await pageFixture.page.close();
     await browser.close();
