@@ -1,5 +1,7 @@
 import { Given, When, Then } from '@cucumber/cucumber';
-import { Browser, chromium, Page } from "@playwright/test"
+import { Browser, chromium, Page } from '@playwright/test'
+import { pageFixture } from "../hooks/pageFixture";
+
 
 
 let browser: Browser;
@@ -8,7 +10,7 @@ let page: Page;
 Given('que o usuário acesse a página de login', async function () {
   browser = await chromium.launch({ headless: false });
   page = await browser.newPage();
-  await page.goto('https://front.serverest.dev/login');
+  await pageFixture.page.goto('https://front.serverest.dev/login');
 });
 
 // When('ele preenche o usuário e a senha corretamente', async function () {
@@ -20,4 +22,5 @@ Given('que o usuário acesse a página de login', async function () {
 
 // Then('ele deve ser autenticado com sucesso', async function () {
 //   await loginPage.loginAndValidate(this.page);
+//   await browser.close();
 // });
